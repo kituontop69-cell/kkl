@@ -1,0 +1,261 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║           DISCORD BOT - QUICK START (Copy & Paste Guide)                       ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+⚡ 5-MINUTE SETUP
+═══════════════════════════════════════════════════════════════════════════════
+
+1. GET TOKENS FROM DISCORD
+   → Go to: https://discord.com/developers/applications
+   → Create new app
+   → Add bot
+   → Copy Bot Token
+   → Copy Client ID
+   → Copy Server ID (from Discord server settings)
+
+2. CREATE .env FILE
+   → In project folder, create file named: .env
+   → Add these 3 lines:
+
+   DISCORD_BOT_TOKEN=your_token_here
+   DISCORD_CLIENT_ID=your_client_id_here
+   DISCORD_GUILD_ID=your_server_id_here
+
+3. INSTALL DEPENDENCIES
+   → Open cmd in project folder
+   → Type: npm install discord.js
+
+4. START BOT
+   → Type: node discord-bot.js
+   → Wait for: "Bot is online!"
+
+5. TEST IN DISCORD
+   → Type: /genkey username:test
+   → Should see key generated
+
+
+📋 WHAT YOU NEED
+═══════════════════════════════════════════════════════════════════════════════
+
+MUST HAVE:
+   ☑ Node.js 14+ (download from https://nodejs.org)
+   ☑ Discord Server (you own or have admin)
+   ☑ Discord Developer Account (free)
+   ☑ Bot Token (from Discord Developer Portal)
+   ☑ Client ID (from Discord Developer Portal)
+   ☑ Guild ID/Server ID (right-click server in Discord)
+
+OPTIONAL:
+   ☐ pm2 (to run bot in background)
+
+
+🔗 DIRECT LINKS
+═══════════════════════════════════════════════════════════════════════════════
+
+Discord Developer Portal:
+   https://discord.com/developers/applications
+
+Get Server ID:
+   Right-click Discord server → Copy Server ID
+
+Node.js Download:
+   https://nodejs.org
+
+
+📦 INSTALLATION COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+Install Node.js:
+   Download from https://nodejs.org
+   Run installer
+   Restart computer
+   Check: node --version
+
+Install discord.js:
+   cd your_project_folder
+   npm install discord.js
+
+Run bot:
+   node discord-bot.js
+
+
+🤖 BOT COMMANDS (In Discord)
+═══════════════════════════════════════════════════════════════════════════════
+
+Generate License Key:
+   /genkey username:username_here
+   /genkey username:streamer expiry_days:30
+   /genkey username:trial max_uses:5
+
+List All Keys:
+   /listkeys
+
+Check If Key Valid:
+   /checkkey keycode:STX-XXXXX-...
+
+Revoke/Delete Key:
+   /revokekey keycode:STX-XXXXX-...
+
+
+⚙️ CONFIGURATION
+═══════════════════════════════════════════════════════════════════════════════
+
+CREATE .env FILE:
+
+   DISCORD_BOT_TOKEN=put_your_token_here
+   DISCORD_CLIENT_ID=put_your_client_id_here
+   DISCORD_GUILD_ID=put_your_server_id_here
+
+Example:
+
+   DISCORD_BOT_TOKEN=MTk4NjIyNDgzNTkxOTI1MjQ4.CvBZSQ.1234567890abcdef
+   DISCORD_CLIENT_ID=198622483591925248
+   DISCORD_GUILD_ID=112233445566778899
+
+SAVE FILE AND RESTART BOT
+
+
+🔑 HOW TO GET YOUR TOKENS
+═══════════════════════════════════════════════════════════════════════════════
+
+BOT TOKEN:
+   1. Go to https://discord.com/developers/applications
+   2. Select your application
+   3. Go to "Bot" tab
+   4. Click "Copy" under TOKEN
+   5. Paste in .env file
+
+CLIENT ID:
+   1. Same page → "General Information" tab
+   2. Copy APPLICATION ID
+   3. Paste in .env file
+
+GUILD ID (Server ID):
+   1. Open Discord
+   2. Right-click your server name
+   3. "Copy Server ID"
+   4. Paste in .env file
+
+⚠️ If you don't see "Copy Server ID":
+   • Settings (gear icon)
+   • User Settings → Advanced
+   • Toggle "Developer Mode" ON
+   • Now right-click server → "Copy Server ID"
+
+
+🚀 START BOT - STEP BY STEP
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Open Command Prompt (Windows) or Terminal (Mac/Linux)
+
+2. Navigate to project folder:
+   cd "path/to/streamer-x-cloud"
+
+3. Type command:
+   node discord-bot.js
+
+4. Wait for message:
+   "Bot is online!"
+
+5. Check Discord - bot should be online (green dot)
+
+6. Type in Discord channel:
+   /genkey username:test
+
+7. Should see key generated!
+
+
+⏹️ STOP BOT
+═══════════════════════════════════════════════════════════════════════════════
+
+Press: Ctrl+C
+
+Type: Y (confirm)
+
+Bot will go offline
+
+
+🔄 RESTART BOT
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Stop bot (Ctrl+C)
+2. Type: Y (confirm)
+3. Wait 5 seconds
+4. Type: node discord-bot.js
+5. Wait for: "Bot is online!"
+
+
+✅ VERIFICATION CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+Before running bot:
+
+□ Node.js installed
+  Check: node --version (should show v14+)
+
+□ discord.js installed
+  Check: npm list discord.js (should show discord.js@...)
+
+□ .env file created
+  File: .env (in project root folder)
+
+□ Bot token in .env
+  Check: DISCORD_BOT_TOKEN=... (your actual token)
+
+□ Client ID in .env
+  Check: DISCORD_CLIENT_ID=... (18-19 digit number)
+
+□ Guild ID in .env
+  Check: DISCORD_GUILD_ID=... (your server ID)
+
+□ Bot invited to server
+  Via: OAuth2 URL in Developer Portal
+
+□ Bot has message permissions
+  Set in: Developer Portal → Bot → Permissions
+
+
+🆘 QUICK FIXES
+═══════════════════════════════════════════════════════════════════════════════
+
+Bot won't start:
+   → npm install discord.js
+   → Check .env file exists
+   → Check tokens are correct
+
+Commands not working:
+   → Restart bot
+   → Check bot is online (green dot)
+   → Verify bot is in server
+
+Token error:
+   → Go to Developer Portal
+   → Regenerate token
+   → Update .env file
+   → Restart bot
+
+Still having issues?
+   → See: DISCORD_BOT_GUIDE.txt (full guide)
+   → Or: TROUBLESHOOTING.txt (common problems)
+
+
+📖 FULL DOCUMENTATION
+═══════════════════════════════════════════════════════════════════════════════
+
+For complete setup guide, see:
+   DISCORD_BOT_SETUP.txt
+
+For troubleshooting, see:
+   TROUBLESHOOTING.txt
+
+For general questions, see:
+   README.txt
+   QUICK_REFERENCE.txt
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                         BOT SETUP IS EASY!
+                    Follow the steps above and start generating
+                         license keys in Discord!
+═══════════════════════════════════════════════════════════════════════════════

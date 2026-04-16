@@ -19,8 +19,32 @@ const CONFIG = {
   GUILD_ID: process.env.DISCORD_GUILD_ID || 'YOUR_GUILD_ID_HERE'
 };
 
-// Store keys in memory (sync with localStorage on client)
+// Store keys in memory and persist to file
 let licenseKeys = [];
+const KEYS_FILE = path.join(__dirname, 'license_keys.json');
+
+// Load keys from file
+function loadKeys() {
+  try {
+    if (fs.existsSync(KEYS_FILE)) {
+      const data = fs.readFileSync(KEYS_FILE, 'utf-8');
+      licenseKeys = JSON.parse(data);
+      console.log(`✓ Loaded ${licenseKeys.length} license keys from file`);
+    }
+  } catch (error) {
+    console.warn('⚠️ Could not load keys file, starting with empty keys');
+    licenseKeys = [];
+  }
+}
+
+// Save keys to file
+function saveKeys() {
+  try {
+    fs.writeFileSync(KEYS_FILE, JSON.stringify(licenseKeys, null, 2), 'utf-8');
+  } catch (error) {
+    console.error('❌ Error saving keys:', error);
+  }
+}
 
 // Generate License Key
 function generateKey(username, expiryDays = 365, maxUses = null) {
@@ -129,6 +153,9 @@ client.on('ready', async () => {
   console.log(`🤖 Bot is online!`);
   console.log(`📍 Server ID: ${CONFIG.GUILD_ID}`);
   
+  // Load keys from file
+  loadKeys();
+  
   const rest = new REST({ version: '10' }).setToken(CONFIG.TOKEN);
   
   try {
@@ -159,6 +186,7 @@ client.on('interactionCreate', async (interaction) => {
 
       const newKey = generateKey(username, expiryDays, maxUses);
       licenseKeys.push(newKey);
+      saveKeys(); // Save to file
 
       const embed = new EmbedBuilder()
         .setColor(0x00FF00)
@@ -231,6 +259,8 @@ client.on('interactionCreate', async (interaction) => {
       }
 
       keyObj.active = false;
+      saveKeys(); // Save to file
+
       const embed = new EmbedBuilder()
         .setColor(0xFF0000)
         .setTitle('✅ Key Revoked')

@@ -3,6 +3,9 @@
 .env.local
 .env.*.local
 
+# License Keys (sensitive data)
+license_keys.json
+
 # Node modules
 node_modules/
 npm-debug.log

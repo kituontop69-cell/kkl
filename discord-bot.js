@@ -67,7 +67,8 @@ function generateKey(username, expiryDays = 365, maxUses = null) {
     expiresAt: expiresAt.toISOString(),
     active: true,
     uses: 0,
-    maxUses: maxUses
+    maxUses: maxUses,
+    usageHistory: []
   };
 }
 
@@ -305,6 +306,15 @@ client.on('interactionCreate', async (interaction) => {
       const status = keyObj.active && !isExpired ? '✅ ACTIVE' : '❌ INACTIVE';
       const statusColor = keyObj.active && !isExpired ? 0x00FF00 : 0xFF0000;
       const usageText = keyObj.maxUses ? `${keyObj.uses}/${keyObj.maxUses}` : `${keyObj.uses}/∞`;
+      
+      // Track usage statistics
+      if (!keyObj.usageHistory) keyObj.usageHistory = [];
+      keyObj.usageHistory.push({
+        checkedBy: interaction.user.username,
+        checkedAt: new Date().toISOString(),
+        status: status
+      });
+      saveKeys();
 
       const embed = new EmbedBuilder()
         .setColor(statusColor)
